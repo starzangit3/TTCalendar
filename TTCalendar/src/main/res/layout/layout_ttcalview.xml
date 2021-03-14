@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/ttcalview_header"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        >
+
+        <ImageButton
+            android:id="@+id/ttcalview_left_btn"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/btn_left_month"
+            android:background="@android:color/transparent"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/ttcalview_title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:text="xxxx" />
+
+        <ImageButton
+            android:id="@+id/ttcalview_right_btn"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/btn_right_month"
+            android:background="@android:color/transparent"
+            android:text="" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <!-- Day of Week  -->
+        <LinearLayout
+            android:id="@+id/ttcalview_week_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            >
+            <include
+                layout="@layout/inc_ttcalview_weekcell" />
+            <include
+                layout="@layout/inc_ttcalview_weekcell" />
+            <include
+                layout="@layout/inc_ttcalview_weekcell" />
+            <include
+                layout="@layout/inc_ttcalview_weekcell" />
+            <include
+                layout="@layout/inc_ttcalview_weekcell" />
+            <include
+                layout="@layout/inc_ttcalview_weekcell" />
+            <include
+                layout="@layout/inc_ttcalview_weekcell" />
+        </LinearLayout>
+
+        <!-- 1st week of month -->
+        <LinearLayout
+            android:id="@+id/ttcalview_week1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            >
+            <include
+                layout="@layout/inc_ttcalview_cell" />
+            <include
+                layout="@layout/inc_ttcalview_cell" />
+            <include
+                layout="@layout/inc_ttcalview_cell" />
+            <include
+                layout="@layout/inc_ttcalview_cell" />
+            <include
+                layout="@layout/inc_ttcalview_cell" />
+            <include
+                layout="@layout/inc_ttcalview_cell" />
+            <include
+                layout="@layout/inc_ttcalview_cell" />
+        </LinearLayout>
+
+        <!-- 2nd week of month -->
+        <LinearLayout
+            android:id="@+id/ttcalview_week2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            >
+            <include
+                layout="@layout/inc_ttcalview_cell" />
+            <include
+                layout="@layout/inc_ttcalview_cell" />
+            <include
+                layout="@layout/inc_ttcalview_cell" />
+            <include
+                layout="@layout/inc_ttcalview_cell" />
+            <include
+                layout="@layout/inc_ttcalview_cell" />
+            <include
+                layout="@layout/inc_ttcalview_cell" />
+            <include
+                layout="@layout/inc_ttcalview_cell" />
+        </LinearLayout>
+
+        <!-- 3rd week of month -->
+        <LinearLayout
+            android:id="@+id/ttcalview_week3"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            >
+            <include
+                layout="@layout/inc_ttcalview_cell" />
+            <include
+                layout="@layout/inc_ttcalview_cell" />
+            <include
+                layout="@layout/inc_ttcalview_cell" />
+            <include
+                layout="@layout/inc_ttcalview_cell" />
+            <include
+                layout="@layout/inc_ttcalview_cell" />
+            <include
+                layout="@layout/inc_ttcalview_cell" />
+            <include
+                layout="@layout/inc_ttcalview_cell" />
+        </LinearLayout>
+
+        <!-- 4th week of month -->
+        <LinearLayout
+            android:id="@+id/ttcalview_week4"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            >
+            <include
+                layout="@layout/inc_ttcalview_cell" />
+            <include
+                layout="@layout/inc_ttcalview_cell" />
+            <include
+                layout="@layout/inc_ttcalview_cell" />
+            <include
+                layout="@layout/inc_ttcalview_cell" />
+            <include
+                layout="@layout/inc_ttcalview_cell" />
+            <include
+                layout="@layout/inc_ttcalview_cell" />
+            <include
+                layout="@layout/inc_ttcalview_cell" />
+        </LinearLayout>
+
+        <!-- 5th week of month -->
+        <LinearLayout
+            android:id="@+id/ttcalview_week5"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            >
+            <include
+                layout="@layout/inc_ttcalview_cell" />
+            <include
+                layout="@layout/inc_ttcalview_cell" />
+            <include
+                layout="@layout/inc_ttcalview_cell" />
+            <include
+                layout="@layout/inc_ttcalview_cell" />
+            <include
+                layout="@layout/inc_ttcalview_cell" />
+            <include
+                layout="@layout/inc_ttcalview_cell" />
+            <include
+                layout="@layout/inc_ttcalview_cell" />
+        </LinearLayout>
+
+        <!-- 6th week of month -->
+        <LinearLayout
+            android:id="@+id/ttcalview_week6"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            >
+            <include
+                layout="@layout/inc_ttcalview_cell" />
+            <include
+                layout="@layout/inc_ttcalview_cell" />
+            <include
+                layout="@layout/inc_ttcalview_cell" />
+            <include
+                layout="@layout/inc_ttcalview_cell" />
+            <include
+                layout="@layout/inc_ttcalview_cell" />
+            <include
+                layout="@layout/inc_ttcalview_cell" />
+            <include
+                layout="@layout/inc_ttcalview_cell" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+</LinearLayout>

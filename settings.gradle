@@ -1,0 +1,3 @@
+include ':TTCalendar'
+include ':app'
+rootProject.name = "TTCalendarDemo"

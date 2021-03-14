@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="TTCalView">
+        <attr name="ttcal_header" format="boolean" />
+        <attr name="ttcal_headerbg" format="color" />
+        <attr name="ttcal_textfont" format="string"/>
+        <attr name="ttcal_textcolor" format="color" />
+
+
+    </declare-styleable>
+</resources>
