@@ -17,27 +17,19 @@ import java.util.Date;
 
 public class TTCalView extends LinearLayout {
 
-//    public enum GTKCELL_STATE {
-//        NORMAL,
-//        SELECTED,
-//    };
     public final int STATE_SELECTED = 1;
-
     private final int CELL_COUNT = 7*6;
 
 
 
-    //int fontFamilyId = 0;
     int attrFontFamilyId = 0;
     int attrTextColor = 0;
     Boolean attrHeader = true;
     int attrHeaderBg = 0;
 
 
-    //Date mDate[] = new Date[7*5];
-    public class GTKDateCell {
+    public class TTDateCell {
 
-//        GTKCELL_STATE eState = GTKCELL_STATE.NORMAL;
         int nState = 0;
 
         public int y;
@@ -47,7 +39,7 @@ public class TTCalView extends LinearLayout {
 
         public LinearLayout llCell = null;
 
-        public GTKDateCell(int y, int m, int d, int state, LinearLayout cell) {
+        public TTDateCell(int y, int m, int d, int state, LinearLayout cell) {
             this.y = y;
             this.m = m;
             this.d = d;
@@ -65,7 +57,7 @@ public class TTCalView extends LinearLayout {
         }
 
     }
-    GTKDateCell mDateCell[] = new GTKDateCell[CELL_COUNT];
+    TTDateCell mDateCell[] = new TTDateCell[CELL_COUNT];
 
 
     public interface TTCalViewX {
@@ -183,7 +175,7 @@ public class TTCalView extends LinearLayout {
 
         for(int i=0; i<CELL_COUNT; i++) {
             LinearLayout llCell = getCell(v, i);
-            mDateCell[i] = new GTKDateCell(0,0,0,0, llCell);
+            mDateCell[i] = new TTDateCell(0,0,0,0, llCell);
 
             llCell.setTag(String.valueOf(i));
             llCell.setOnClickListener(new OnClickListener() {
@@ -191,7 +183,7 @@ public class TTCalView extends LinearLayout {
                 public void onClick(View v) {
                     if(listener!=null) {
                         int pos = Integer.parseInt((String)llCell.getTag());
-                        GTKDateCell cellDate = mDateCell[pos];
+                        TTDateCell cellDate = mDateCell[pos];
                         if(cellDate!=null) {
                             listener.onDaySelected(cellDate.y, cellDate.m, cellDate.d, cellDate.nState);
                         }
@@ -332,7 +324,7 @@ public class TTCalView extends LinearLayout {
     public void selectDate(int y, int m, int d, Boolean bSelect) {
 
         //LinearLayout llCell = findCellByDate(y, m, d);
-        GTKDateCell cell = findGTKCellByDate(y, m, d);
+        TTDateCell cell = findGTKCellByDate(y, m, d);
         LinearLayout llCell = cell.llCell;
 
         if(llCell!=null) {
@@ -357,10 +349,10 @@ public class TTCalView extends LinearLayout {
     }
 
 
-    public GTKDateCell findGTKCellByDate(int y, int m, int d) {
-        GTKDateCell cellFound = null;
+    public TTDateCell findGTKCellByDate(int y, int m, int d) {
+        TTDateCell cellFound = null;
         for(int i=0; i<CELL_COUNT; i++) {
-            GTKDateCell cell = mDateCell[i];
+            TTDateCell cell = mDateCell[i];
             if(cell!=null && cell.y==y && cell.m==m && cell.d==d) {
                 cellFound = cell;
                 break;
@@ -372,7 +364,7 @@ public class TTCalView extends LinearLayout {
 //    public LinearLayout findCellByDate(int y, int m, int d) {
 //        LinearLayout llCell = null;
 //        for(int i=0; i<CELL_COUNT; i++) {
-//            GTKDateCell cell = mDateCell[i];
+//            TTDateCell cell = mDateCell[i];
 //            if(cell!=null && cell.y==y && cell.m==m && cell.d==d) {
 //                llCell = cell.llCell;
 //                break;
@@ -396,7 +388,7 @@ public class TTCalView extends LinearLayout {
         LinearLayout llWeekArea = findViewById(R.id.ttcalview_week_title);
         return llWeekArea;
     }
-    public GTKDateCell[] getDays() {
+    public TTDateCell[] getDays() {
         return mDateCell;
     }
 

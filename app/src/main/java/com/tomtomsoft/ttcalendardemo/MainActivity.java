@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         };
 
         // date loop
-        TTCalView.GTKDateCell cells[] = calView.getDays();
+        TTCalView.TTDateCell cells[] = calView.getDays();
         for(int i=0; i<cells.length; i++) {
 
             String sTemp = String.format("cell[%d]: y=%d,m=%d,d=%d",
