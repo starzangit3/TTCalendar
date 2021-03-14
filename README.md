@@ -164,3 +164,11 @@ You can retrieve all days (7*6 cells).
 # 5. More
 
 For more, please look into MainActivity.java in sample.
+
+# 6. Screenshots
+
+![gtkcalendar-1](https://user-images.githubusercontent.com/55382461/111071418-79425900-8519-11eb-9c3c-393100afb5ad.png)
+![gtkcalendar-2](https://user-images.githubusercontent.com/55382461/111071420-7ba4b300-8519-11eb-9ec8-4a0bf5d3ece2.png)
+![gtkcalendar-3](https://user-images.githubusercontent.com/55382461/111071427-7f383a00-8519-11eb-9541-199a87debd9d.png)
+
+
