@@ -15,7 +15,7 @@ Add it in your root build.gradle at the end of repositories:
 ## Step 2. Add the dependency
 
 	dependencies {
-	        implementation 'com.github.tomtomsoft:TTCalendar:0.9.3'
+	        implementation 'com.github.TOMTOMSOFT:TTCalendar:0.9.4'
 	}
 
 # 2. Sample xml
