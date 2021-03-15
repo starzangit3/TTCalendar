@@ -15,7 +15,7 @@ Add it in your root build.gradle at the end of repositories:
 ## Step 2. Add the dependency
 
 	dependencies {
-	        implementation 'com.github.TOMTOMSOFT:TTCalendar:0.9.4'
+	        implementation 'com.github.TOMTOMSOFT:TTCalendar:0.9.5'
 	}
 
 # 2. Sample xml
@@ -95,17 +95,12 @@ public class MainActivity extends AppCompatActivity {
 # 4. Additional access method
 
 
-## 4.1. Set Date (year and month)
+## 4.1. Set Date 
 	
-	public void setDate(int y, int m)
+	public void setDate(int y, int m, int d)
 
-## 4.2. Get header area.
-
-    public LinearLayout getHeader()
-
-With this, You can change header area background color and so on.
-   
-## 4.3. Get Every cell - total 42 (7day x 6week) cells
+  
+## 4.2. Get Every cell - total 42 (7day x 6week) cells
     
 	public TTDateCell[] getDays()
 
@@ -124,11 +119,13 @@ You can retrieve all days (7*6 cells).
 		Log.d(TAG, sTemp);
 	}
 
-## 4.4. Get Header area
+## 4.3. Get Header area
     
 	LinearLayout llHeaderArea = calView.getHeaderArea();
 
-## 4.5. Get Week title rea.
+With this, You can change header area background color and so on.
+
+## 4.4. Get Week title rea.
     
 	LinearLayout llWeekTitleArea = calView.getWeekArea();
 
@@ -136,16 +133,16 @@ You can retrieve all days (7*6 cells).
     TextView tvTitle = calView.getHeaderTitle();
 
 
-## 4.6. Retrieve Year, Month, Day
+## 4.5. Retrieve Year, Month, Day
 	
 	public int getYear()  // ex: returns 2021
 
 	public int getMonth() // ex: returns 3
 
-	public int getSelectedDay() // ex: 31
+	public int getDay()   // ex: 31
 
 
-## 4.7 TTDateCell class
+## 4.6 TTDateCell class
 
 
 	public class TTDateCell {

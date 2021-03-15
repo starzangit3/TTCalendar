@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
                 calView.movePrevMonth();
                 int y = calView.getYear();
                 int m = calView.getMonth();
-                int d = calView.getSelectedDay();
+                int d = calView.getDay();
                 String sTemp = String.format("Prev: y=%d,m=%d,d=%d", y, m, d);
                 Log.d(TAG, sTemp);
 
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
                 calView.moveNextMonth();
                 int y = calView.getYear();
                 int m = calView.getMonth();
-                int d = calView.getSelectedDay();
+                int d = calView.getDay();
                 String sTemp = String.format("Next: y=%d,m=%d,d=%d", y, m, d);
                 Log.d(TAG, sTemp);
 
@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
         TextView tvTitle = calView.getHeaderTitle();
 
 
-        calView.setDate(2021, 4);
+        calView.setDate(2021, 3, 3);
         calView.selectDate(2021, 3, 14, true);
 
     }
