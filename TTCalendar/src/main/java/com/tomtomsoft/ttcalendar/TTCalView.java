@@ -417,7 +417,7 @@ public class TTCalView extends LinearLayout {
         return mCalendar.get(Calendar.YEAR);
     }
     public int getMonth() {
-        return mCalendar.get(Calendar.MONTH);
+        return mCalendar.get(Calendar.MONTH) + 1;
     }
     public int getSelectedDay() {
         int day = -1;
