@@ -10,7 +10,8 @@ import android.widget.TextView;
 import com.tomtomsoft.ttcalendar.TTCalView;
 
 public class MainActivity extends AppCompatActivity {
-    private String TAG = MainActivity.class.getSimpleName();
+    //private String TAG = MainActivity.class.getSimpleName();
+    private String TAG = "TTCalendarLog";
     TTCalView calView = null;
 
     @Override
@@ -20,13 +21,11 @@ public class MainActivity extends AppCompatActivity {
 
         calView = findViewById(R.id.calView);
         calView.showHeader(true);
-        calView.selectDate(2021, 3, 14, true);
         calView.listener = new TTCalView.TTCalViewX() {
             @Override
             public void onDaySelected(int y, int m, int d, int state) {
 
-                String sTemp = String.format("day selected: y=%d,m=%d,d=%d, state=%d",
-                        y, m, d, state);
+                String sTemp = String.format("click: y=%d,m=%d,d=%d", y, m, d);
                 Log.d(TAG, sTemp);
             }
 
@@ -34,11 +33,23 @@ public class MainActivity extends AppCompatActivity {
             public void onPrevMonth() {
 
                 calView.movePrevMonth();
+                int y = calView.getYear();
+                int m = calView.getMonth();
+                int d = calView.getSelectedDay();
+                String sTemp = String.format("Prev: y=%d,m=%d,d=%d", y, m, d);
+                Log.d(TAG, sTemp);
+
             }
 
             @Override
             public void onNextMonth() {
                 calView.moveNextMonth();
+                int y = calView.getYear();
+                int m = calView.getMonth();
+                int d = calView.getSelectedDay();
+                String sTemp = String.format("Next: y=%d,m=%d,d=%d", y, m, d);
+                Log.d(TAG, sTemp);
+
             }
         };
 
@@ -61,9 +72,8 @@ public class MainActivity extends AppCompatActivity {
         TextView tvTitle = calView.getHeaderTitle();
 
 
-        calView.setDate(2021, 9);
-
-
+        calView.setDate(2021, 4);
+        calView.selectDate(2021, 3, 14, true);
 
     }
 }

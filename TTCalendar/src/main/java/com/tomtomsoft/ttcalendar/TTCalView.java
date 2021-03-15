@@ -21,8 +21,8 @@ public class TTCalView extends LinearLayout {
     private final int CELL_COUNT = 7*6;
 
 
-    private int nCurrentYear = 0;
-    private int nCurrentMonth = 0;
+    int nSelectedCellIndex = -1;
+
 
     int attrFontFamilyId = 0;
     int attrTextColor = 0;
@@ -130,9 +130,6 @@ public class TTCalView extends LinearLayout {
         LayoutInflater li = (LayoutInflater) getContext().getSystemService(infService);
         View v = li.inflate(R.layout.layout_ttcalview, this, false);
         addView(v);
-//        bg = (LinearLayout) findViewById(R.id.bg);
-//        symbol = (ImageView) findViewById(R.id.symbol);
-//        text = (TextView) findViewById(R.id.text);
 
         v.findViewById(R.id.ttcalview_left_btn).setOnClickListener(new OnClickListener() {
             @Override
@@ -183,8 +180,10 @@ public class TTCalView extends LinearLayout {
             llCell.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    int pos = Integer.parseInt((String)v.getTag());
+                    nSelectedCellIndex = pos;
                     if(listener!=null) {
-                        int pos = Integer.parseInt((String)llCell.getTag());
+                        //int pos = Integer.parseInt((String)llCell.getTag());
                         TTDateCell cellDate = mDateCell[pos];
                         if(cellDate!=null) {
                             listener.onDaySelected(cellDate.y, cellDate.m, cellDate.d, cellDate.nState);
@@ -228,20 +227,18 @@ public class TTCalView extends LinearLayout {
             tvTitle.setTypeface(ResourcesCompat.getFont(getContext(), attrFontFamilyId));
         }
 
-        nCurrentYear = mCalendar.get(Calendar.YEAR);
-        nCurrentMonth = mCalendar.get(Calendar.MONTH) + 1;
-
         return v;
     }
 
     private void setCalendar(View v) {
 
+        nSelectedCellIndex = -1;
         for(int i=0; i<CELL_COUNT; i++) {
             mDateCell[i].reset();
         }
 
-//        int nYear = mCalendar.get(Calendar.YEAR);
-//        int nMonth = mCalendar.get(Calendar.MONTH) + 1;
+        int nCurrentYear = mCalendar.get(Calendar.YEAR);
+        int nCurrentMonth = mCalendar.get(Calendar.MONTH) + 1;
 
         mCalendar.set(nCurrentYear, nCurrentMonth-1, 1, 1, 1, 1);
         int nDayOfWeek = mCalendar.get(Calendar.DAY_OF_WEEK);
@@ -331,6 +328,9 @@ public class TTCalView extends LinearLayout {
 
         //LinearLayout llCell = findCellByDate(y, m, d);
         TTDateCell cell = findGTKCellByDate(y, m, d);
+        if(cell==null)
+            return;
+
         LinearLayout llCell = cell.llCell;
 
         if(llCell!=null) {
@@ -404,9 +404,27 @@ public class TTCalView extends LinearLayout {
     }
     public void setDate(int y, int m) {
 
-        this.nCurrentYear = y;
-        this.nCurrentMonth = m;
+        if(m<0 || m>11)
+            return;
+
+        mCalendar.set(Calendar.YEAR, y);
+        mCalendar.set(Calendar.MONTH, m-1);
 
         setCalendar(mCalView);
+    }
+
+    public int getYear() {
+        return mCalendar.get(Calendar.YEAR);
+    }
+    public int getMonth() {
+        return mCalendar.get(Calendar.MONTH);
+    }
+    public int getSelectedDay() {
+        int day = -1;
+        if(nSelectedCellIndex>-1) {
+            TTDateCell cellDate = mDateCell[nSelectedCellIndex];
+            day = cellDate.d;
+        }
+        return day;
     }
 }

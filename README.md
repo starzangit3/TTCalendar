@@ -15,7 +15,7 @@ Add it in your root build.gradle at the end of repositories:
 ## Step 2. Add the dependency
 
 	dependencies {
-	        implementation 'com.github.tomtomsoft:TTCalendar:0.9.2'
+	        implementation 'com.github.tomtomsoft:TTCalendar:0.9.3'
 	}
 
 # 2. Sample xml
@@ -131,7 +131,17 @@ You can retrieve all days (7*6 cells).
         // Get Title TextView
         TextView tvTitle = calView.getHeaderTitle();
 
-## 4.6 TTDateCell class
+
+## 4.6. Retrieve Year, Month, Day
+	
+	public int getYear()  // ex: returns 2021
+
+	public int getMonth() // ex: returns 3
+
+	public int getSelectedDay() // ex: 31
+
+
+## 4.7 TTDateCell class
 
 
 		public class TTDateCell {
