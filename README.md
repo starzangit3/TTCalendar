@@ -94,13 +94,17 @@ Add it in your root build.gradle at the end of repositories:
 ```
 # 4. Additional access method
 
-## 4.1. Get header area.
+
+## 4.1. Set Date (year and month)
+		public void setDate(int y, int m)
+
+## 4.2. Get header area.
 
         public LinearLayout getHeader()
 
 With this, You can change header area background color and so on.
    
-## 4.2. Get Every cell - total 42 (7day x 6week) cells
+## 4.3. Get Every cell - total 42 (7day x 6week) cells
         public TTDateCell[] getDays()
 
 
@@ -118,16 +122,16 @@ You can retrieve all days (7*6 cells).
             Log.d(TAG, sTemp);
         }
 
-## 4.3. Get Header area
+## 4.4. Get Header area
         LinearLayout llHeaderArea = calView.getHeaderArea();
 
-## 4.4. Get Week title rea.
+## 4.5. Get Week title rea.
         LinearLayout llWeekTitleArea = calView.getWeekArea();
 
         // Get Title TextView
         TextView tvTitle = calView.getHeaderTitle();
 
-## 4.5 TTDateCell class
+## 4.6 TTDateCell class
 
 
 		public class TTDateCell {

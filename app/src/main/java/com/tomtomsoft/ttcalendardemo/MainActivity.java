@@ -61,6 +61,8 @@ public class MainActivity extends AppCompatActivity {
         TextView tvTitle = calView.getHeaderTitle();
 
 
+        calView.setDate(2021, 9);
+
 
 
     }

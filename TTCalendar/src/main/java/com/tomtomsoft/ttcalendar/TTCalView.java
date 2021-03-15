@@ -21,6 +21,8 @@ public class TTCalView extends LinearLayout {
     private final int CELL_COUNT = 7*6;
 
 
+    private int nCurrentYear = 0;
+    private int nCurrentMonth = 0;
 
     int attrFontFamilyId = 0;
     int attrTextColor = 0;
@@ -225,6 +227,10 @@ public class TTCalView extends LinearLayout {
         if (attrFontFamilyId > 0) {
             tvTitle.setTypeface(ResourcesCompat.getFont(getContext(), attrFontFamilyId));
         }
+
+        nCurrentYear = mCalendar.get(Calendar.YEAR);
+        nCurrentMonth = mCalendar.get(Calendar.MONTH) + 1;
+
         return v;
     }
 
@@ -234,17 +240,17 @@ public class TTCalView extends LinearLayout {
             mDateCell[i].reset();
         }
 
-        int nYear = mCalendar.get(Calendar.YEAR);
-        int nMonth = mCalendar.get(Calendar.MONTH) + 1;
+//        int nYear = mCalendar.get(Calendar.YEAR);
+//        int nMonth = mCalendar.get(Calendar.MONTH) + 1;
 
-        mCalendar.set(nYear, nMonth-1, 1, 1, 1, 1);
+        mCalendar.set(nCurrentYear, nCurrentMonth-1, 1, 1, 1, 1);
         int nDayOfWeek = mCalendar.get(Calendar.DAY_OF_WEEK);
 
         int days = mCalendar.getActualMaximum(Calendar.DAY_OF_MONTH);
 
 
         TextView tvTitle = v.findViewById(R.id.ttcalview_title_tv);
-        String sTitle = String.format("%d년 %d월", nYear, nMonth);
+        String sTitle = String.format("%d년 %d월", nCurrentYear, nCurrentMonth);
         tvTitle.setText(sTitle);
 
         Calendar cal = Calendar.getInstance();
@@ -270,7 +276,7 @@ public class TTCalView extends LinearLayout {
             tvCell.setText(String.valueOf(i+1));
             tvCell.setBackgroundResource(0);
 
-            mDateCell[k].setData(nYear, nMonth, i+1,0);
+            mDateCell[k].setData(nCurrentYear, nCurrentMonth, i+1,0);
         }
 
         for(int i=0; i<(CELL_COUNT-(nPrevDays+days)); i++) {
@@ -395,5 +401,12 @@ public class TTCalView extends LinearLayout {
     public TextView getHeaderTitle() {
         TextView tvTitle = findViewById(R.id.ttcalview_title_tv);
         return tvTitle;
+    }
+    public void setDate(int y, int m) {
+
+        this.nCurrentYear = y;
+        this.nCurrentMonth = m;
+
+        setCalendar(mCalView);
     }
 }
