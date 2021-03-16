@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -23,9 +24,11 @@ public class TTCalView extends LinearLayout {
 
     int attrFontFamilyId = 0;
     int attrTextColor = 0;
+    int attrTextSize = 0;
     Boolean attrHeader = true;
     int attrHeaderBg = 0;
     int attrSelectBg = 0;
+    String attrTitleFormat = "%d-%d";
 
 
     public class TTDateCell {
@@ -116,6 +119,11 @@ public class TTCalView extends LinearLayout {
             attrHeader = a.getBoolean(R.styleable.TTCalView_ttcal_header, true);
             attrHeaderBg = a.getColor(R.styleable.TTCalView_ttcal_headerbg, 0);
             attrSelectBg = a.getResourceId(R.styleable.TTCalView_ttcal_selectbg, 0);
+            attrTextSize = a.getDimensionPixelSize(R.styleable.TTCalView_ttcal_textsize, 0);
+            String sTitleFormat = a.getString(R.styleable.TTCalView_ttcal_titleformat);
+            if(sTitleFormat!=null && !sTitleFormat.isEmpty())
+                attrTitleFormat = sTitleFormat;
+
         } finally {
             a.recycle();
         }
@@ -130,6 +138,9 @@ public class TTCalView extends LinearLayout {
         View v = li.inflate(R.layout.layout_ttcalview, this, false);
         addView(v);
 
+        /**
+         * Button Event
+         */
         v.findViewById(R.id.ttcalview_left_btn).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -151,6 +162,26 @@ public class TTCalView extends LinearLayout {
             }
         });
 
+        /**
+         * Header Area
+         */
+        LinearLayout llHeaderArea = getHeaderArea();
+        TextView tvTitle = v.findViewById(R.id.ttcalview_title_tv);
+        if (attrFontFamilyId > 0) {
+            tvTitle.setTypeface(ResourcesCompat.getFont(getContext(), attrFontFamilyId));
+        }
+        if(attrTextSize > 0) {
+            tvTitle.setTextSize(TypedValue.COMPLEX_UNIT_PX, attrTextSize);
+        }
+
+        showHeader(attrHeader);
+        if(attrHeaderBg !=0 ) {
+            llHeaderArea.setBackgroundColor(attrHeaderBg);
+        }
+
+        /**
+         * Week Area
+         */
         //LinearLayout ll = v.findViewById(R.id.ttcalview_week_title);
         LinearLayout llWeekArea = getWeekArea();
         for(int i=0; i<llWeekArea.getChildCount(); i++) {
@@ -169,8 +200,14 @@ public class TTCalView extends LinearLayout {
             if (attrFontFamilyId > 0) {
                 tvWeekChild.setTypeface(ResourcesCompat.getFont(getContext(), attrFontFamilyId));
             }
+            if(attrTextSize > 0) {
+                tvWeekChild.setTextSize(TypedValue.COMPLEX_UNIT_PX, attrTextSize);
+            }
         }
 
+        /**
+         * Cells
+         */
         for(int i=0; i<CELL_COUNT; i++) {
             LinearLayout llCell = getCell(v, i);
             mDateCell[i] = new TTDateCell(0,0,0,0, llCell);
@@ -196,37 +233,9 @@ public class TTCalView extends LinearLayout {
             if (attrFontFamilyId > 0) {
                 tvCell.setTypeface(ResourcesCompat.getFont(getContext(), attrFontFamilyId));
             }
-        }
-
-//        for(int i=0; i<CELL_COUNT; i++) {
-//            LinearLayout llCell = getCell(v, i);
-//            llCell.setTag(String.valueOf(i));
-//            llCell.setOnClickListener(new OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    if(listener!=null) {
-//                        int pos = Integer.parseInt((String)llCell.getTag());
-//                        GTKDateCell cellDate = mDateCell[pos];
-//                        if(cellDate!=null) {
-//                            listener.onDaySelected(cellDate.y, cellDate.m, cellDate.d, cellDate.nState);
-//                        }
-//
-//                    }
-//                }
-//            });
-//        }
-
-        /* HEADER */
-        LinearLayout llHeaderArea = getHeaderArea();
-        showHeader(attrHeader);
-        if(attrHeaderBg !=0 ) {
-            llHeaderArea.setBackgroundColor(attrHeaderBg);
-        }
-        TextView tvTitle = v.findViewById(R.id.ttcalview_title_tv);
-        if (attrFontFamilyId > 0) {
-            tvTitle.setTypeface(ResourcesCompat.getFont(getContext(), attrFontFamilyId));
-        }
-        if(attrSelectBg > 0) {
+            if(attrTextSize > 0) {
+                tvCell.setTextSize(TypedValue.COMPLEX_UNIT_PX, attrTextSize);
+            }
 
         }
 
@@ -249,7 +258,8 @@ public class TTCalView extends LinearLayout {
 
 
         TextView tvTitle = v.findViewById(R.id.ttcalview_title_tv);
-        String sTitle = String.format("%d년 %d월", nCurrentYear, nCurrentMonth);
+        //String sTitle = String.format("%d년 %d월", nCurrentYear, nCurrentMonth);
+        String sTitle = String.format(attrTitleFormat, nCurrentYear, nCurrentMonth);
         tvTitle.setText(sTitle);
 
         Calendar cal = Calendar.getInstance();
@@ -404,6 +414,17 @@ public class TTCalView extends LinearLayout {
     public TextView getHeaderTitle() {
         TextView tvTitle = findViewById(R.id.ttcalview_title_tv);
         return tvTitle;
+    }
+    public void setWeekTitle(String[] weekTitles) {
+        if(weekTitles==null && weekTitles.length!=7)
+            return;
+
+        LinearLayout llWeekTitle = getWeekArea();
+        for(int i=0; i<weekTitles.length; i++) {
+            LinearLayout llChild = (LinearLayout) llWeekTitle.getChildAt(i);
+            TextView tvWeekCell = llChild.findViewById(R.id.ttcalview_weekcell_tv);
+            tvWeekCell.setText(weekTitles[i]);
+        }
     }
     public Boolean setDate(int y, int m, int d) {
 

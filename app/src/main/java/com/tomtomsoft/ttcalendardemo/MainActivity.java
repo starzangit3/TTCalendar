@@ -75,5 +75,8 @@ public class MainActivity extends AppCompatActivity {
         calView.setDate(2021, 3, 3);
         calView.selectDate(2021, 3, 14, true);
 
+        String arrWeekTitles[] = {"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
+        calView.setWeekTitle(arrWeekTitles);
+
     }
 }

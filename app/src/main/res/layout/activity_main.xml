@@ -17,6 +17,8 @@
         app:ttcal_textfont="@font/nanum_square_eb"
         app:ttcal_headerbg="#EAAECD"
         app:ttcal_selectbg="@drawable/xml_border_emptycircle"
+        app:ttcal_textsize="10sp"
+        app:ttcal_titleformat="%d-%d"
 
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

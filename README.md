@@ -160,6 +160,23 @@ With this, You can change header area background color and so on.
 
 	</androidx.constraintlayout.widget.ConstraintLayout>	
 
+## 4.7. Display year and month in header title.
+
+	app:ttcal_titleformat="%d-%d"
+
+The first '%d' is replaced with year, the second '%d' is done by month.
+
+## 4.8. Change text size and font.
+
+	app:ttcal_textfont="@font/nanum_square_eb"
+	app:ttcal_textsize="10sp"
+
+
+## 4.9. Change the appearance of the selected day.
+
+    app:ttcal_selectbg="@drawable/xml_border_emptycircle"
+	
+
 # 5.  TTDateCell class
 
 

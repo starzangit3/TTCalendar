@@ -6,6 +6,8 @@
         <attr name="ttcal_textfont" format="string"/>
         <attr name="ttcal_textcolor" format="color" />
         <attr name="ttcal_selectbg" format="reference" />
+        <attr name="ttcal_textsize"  format="dimension"/>
+        <attr name="ttcal_titleformat" format="string" />
 
 
     </declare-styleable>
