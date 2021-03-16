@@ -16,6 +16,7 @@
         app:ttcal_header="true"
         app:ttcal_textfont="@font/nanum_square_eb"
         app:ttcal_headerbg="#EAAECD"
+        app:ttcal_selectbg="@drawable/xml_border_emptycircle"
 
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

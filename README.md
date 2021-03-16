@@ -15,7 +15,7 @@ Add it in your root build.gradle at the end of repositories:
 ## Step 2. Add the dependency
 
 	dependencies {
-	        implementation 'com.github.TOMTOMSOFT:TTCalendar:0.9.5'
+	        implementation 'com.github.TOMTOMSOFT:TTCalendar:0.9.6'
 	}
 
 # 2. Sample xml
@@ -141,8 +141,26 @@ With this, You can change header area background color and so on.
 
 	public int getDay()   // ex: 31
 
+## 4.6. Set a selected cell background
 
-## 4.6 TTDateCell class
+	<androidx.constraintlayout.widget.ConstraintLayout 
+		xmlns:android="http://schemas.android.com/apk/res/android"
+    	xmlns:app="http://schemas.android.com/apk/res-auto"
+    	xmlns:tools="http://schemas.android.com/tools"
+    	android:layout_width="match_parent"
+    	android:layout_height="match_parent"
+    	tools:context=".MainActivity">
+
+
+    	<com.tomtomsoft.ttcalendar.TTCalView
+        	android:id="@+id/calView"
+			..........
+        	app:ttcal_selectbg="@drawable/xml_border_emptycircle"
+        />
+
+	</androidx.constraintlayout.widget.ConstraintLayout>	
+
+# 5.  TTDateCell class
 
 
 	public class TTDateCell {
@@ -176,11 +194,11 @@ With this, You can change header area background color and so on.
 	}	
 
 
-# 5. More
+# 6. More
 
 For more, please look into MainActivity.java in sample.
 
-# 6. Screenshots
+# 7. Screenshots
 
 ![gtkcalendar-1](https://user-images.githubusercontent.com/55382461/111071418-79425900-8519-11eb-9c3c-393100afb5ad.png)
 ![gtkcalendar-2](https://user-images.githubusercontent.com/55382461/111071420-7ba4b300-8519-11eb-9ec8-4a0bf5d3ece2.png)

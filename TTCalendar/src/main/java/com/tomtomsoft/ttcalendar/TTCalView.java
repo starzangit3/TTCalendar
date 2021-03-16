@@ -13,7 +13,6 @@ import androidx.annotation.Nullable;
 import androidx.core.content.res.ResourcesCompat;
 
 import java.util.Calendar;
-import java.util.Date;
 
 public class TTCalView extends LinearLayout {
 
@@ -26,6 +25,7 @@ public class TTCalView extends LinearLayout {
     int attrTextColor = 0;
     Boolean attrHeader = true;
     int attrHeaderBg = 0;
+    int attrSelectBg = 0;
 
 
     public class TTDateCell {
@@ -115,6 +115,7 @@ public class TTCalView extends LinearLayout {
             attrTextColor = a.getColor(R.styleable.TTCalView_ttcal_textcolor, 0);
             attrHeader = a.getBoolean(R.styleable.TTCalView_ttcal_header, true);
             attrHeaderBg = a.getColor(R.styleable.TTCalView_ttcal_headerbg, 0);
+            attrSelectBg = a.getResourceId(R.styleable.TTCalView_ttcal_selectbg, 0);
         } finally {
             a.recycle();
         }
@@ -225,6 +226,9 @@ public class TTCalView extends LinearLayout {
         if (attrFontFamilyId > 0) {
             tvTitle.setTypeface(ResourcesCompat.getFont(getContext(), attrFontFamilyId));
         }
+        if(attrSelectBg > 0) {
+
+        }
 
         return v;
     }
@@ -334,7 +338,8 @@ public class TTCalView extends LinearLayout {
         if(llCell!=null) {
             TextView tv = llCell.findViewById(R.id.ttcalview_cell_tv);
             if(bSelect) {
-                tv.setBackgroundResource(R.drawable.xml_border_circle2);
+                int nSelectBg = attrSelectBg > 0 ? attrSelectBg : R.drawable.xml_border_circle;
+                tv.setBackgroundResource(nSelectBg);
                 cell.nState += STATE_SELECTED;
             } else {
                 tv.setBackgroundResource(0);

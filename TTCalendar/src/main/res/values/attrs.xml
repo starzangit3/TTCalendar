@@ -5,6 +5,7 @@
         <attr name="ttcal_headerbg" format="color" />
         <attr name="ttcal_textfont" format="string"/>
         <attr name="ttcal_textcolor" format="color" />
+        <attr name="ttcal_selectbg" format="reference" />
 
 
     </declare-styleable>
