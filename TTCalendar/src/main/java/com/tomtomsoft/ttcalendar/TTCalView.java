@@ -244,17 +244,25 @@ public class TTCalView extends LinearLayout {
 
     private void setCalendar(View v) {
 
+
+        Calendar _cal = Calendar.getInstance();
+        _cal.setTime(mCalendar.getTime());
+        _cal.set(Calendar.DATE, 1);
+        // or,
+        // Calendar _cal = (Calendar) mCalendar.clone();
+
+
         for(int i=0; i<CELL_COUNT; i++) {
             mDateCell[i].reset();
         }
 
-        int nCurrentYear = mCalendar.get(Calendar.YEAR);
-        int nCurrentMonth = mCalendar.get(Calendar.MONTH) + 1;
+        int nCurrentYear = _cal.get(Calendar.YEAR);
+        int nCurrentMonth = _cal.get(Calendar.MONTH) + 1;
+        int _day = _cal.get(Calendar.DATE);
 
-        //mCalendar.set(nCurrentYear, nCurrentMonth-1, 1, 1, 1, 1);
-        int nDayOfWeek = mCalendar.get(Calendar.DAY_OF_WEEK);
+        int nDayOfWeek = _cal.get(Calendar.DAY_OF_WEEK);
 
-        int days = mCalendar.getActualMaximum(Calendar.DAY_OF_MONTH);
+        int days = _cal.getActualMaximum(Calendar.DAY_OF_MONTH);
 
 
         TextView tvTitle = v.findViewById(R.id.ttcalview_title_tv);
