@@ -7,6 +7,24 @@
     tools:context=".MainActivity">
 
 
+    <LinearLayout
+        android:id="@+id/ll_top"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#eeeeee"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Unselect All"
+            android:onClick="onBtn_UnselectAll"
+            />
+    </LinearLayout>
+
     <com.tomtomsoft.ttcalendar.TTCalView
         android:id="@+id/calView"
         android:layout_width="360dp"
@@ -20,7 +38,7 @@
         app:ttcal_textsize="10sp"
         app:ttcal_titleformat="%d-%d"
 
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ll_top"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"

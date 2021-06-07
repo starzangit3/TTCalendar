@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -27,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
 
                 String sTemp = String.format("click: y=%d,m=%d,d=%d", y, m, d);
                 Log.d(TAG, sTemp);
+
+                calView.selectDate(y, m, d, true);
             }
 
             @Override
@@ -78,5 +81,10 @@ public class MainActivity extends AppCompatActivity {
         String arrWeekTitles[] = {"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
         calView.setWeekTitle(arrWeekTitles);
 
+    }
+
+
+    public void onBtn_UnselectAll(View v) {
+        calView.unselectAll();
     }
 }

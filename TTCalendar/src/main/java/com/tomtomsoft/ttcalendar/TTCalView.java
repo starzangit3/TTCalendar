@@ -344,6 +344,19 @@ public class TTCalView extends LinearLayout {
 //        requestLayout();
 //    }
 
+    public void unselectAll() {
+        for(int i=0; i<CELL_COUNT; i++) {
+
+            TTDateCell cell = mDateCell[i];
+            LinearLayout llCell = cell.llCell;
+            if(llCell!=null) {
+                TextView tv = llCell.findViewById(R.id.ttcalview_cell_tv);
+                tv.setBackgroundResource(0);
+                cell.nState ^= STATE_SELECTED;
+            }
+        }
+    }
+
     public void selectDate(int y, int m, int d, Boolean bSelect) {
 
         //LinearLayout llCell = findCellByDate(y, m, d);
