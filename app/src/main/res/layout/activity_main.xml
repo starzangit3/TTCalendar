@@ -23,6 +23,12 @@
             android:text="Unselect All"
             android:onClick="onBtn_UnselectAll"
             />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Popup"
+            android:onClick="onBtn_Popup"
+            />
     </LinearLayout>
 
     <com.tomtomsoft.ttcalendar.TTCalView

@@ -87,4 +87,10 @@ public class MainActivity extends AppCompatActivity {
     public void onBtn_UnselectAll(View v) {
         calView.unselectAll();
     }
+
+    public void onBtn_Popup(View v) {
+
+        CalendarPopup popup = new CalendarPopup();
+        popup.show(getSupportFragmentManager(), "popup");
+    }
 }

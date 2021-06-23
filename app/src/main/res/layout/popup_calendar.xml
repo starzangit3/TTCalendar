@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="시간대 운영 시작"
+            android:fontFamily="@font/nanum_square_b"
+            android:textColor="#030303"
+            android:textSize="13sp"
+            android:textStyle="normal"
+            android:textAlignment="center"
+            />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:text="날짜를 선택해 주세요"
+            android:fontFamily="@font/nanum_square_b"
+            android:textColor="#1062e0"
+            android:textSize="13sp"
+            android:textStyle="normal"
+            android:textAlignment="center"
+            />
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:background="@drawable/xml_calpopup_r3_top_f6"
+            >
+
+            <ImageButton
+                android:id="@+id/btn_left_month"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/btn_left_month"
+                android:background="@android:color/transparent"
+                android:layout_marginRight="12dp"
+                />
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2019년 10월"
+                android:fontFamily="@font/nanum_square_eb"
+                android:textColor="#030303"
+                android:textSize="13sp"
+                android:textStyle="normal"
+                android:textAlignment="center"
+                />
+            <ImageButton
+                android:id="@+id/btn_right_month"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/btn_right_month"
+                android:background="@android:color/transparent"
+                android:layout_marginLeft="12dp"
+                />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/xml_calpopup_r3_bottom_f6"
+            android:gravity="center"
+            >
+            <com.tomtomsoft.ttcalendar.TTCalView
+                android:id="@+id/calView"
+                android:layout_width="360dp"
+                android:layout_height="230dp"
+                android:layout_marginTop="10dp"
+                app:ttcal_header="false"
+                app:ttcal_textfont="@font/nanum_square_eb"
+                app:ttcal_headerbg="#EAAECD"
+                app:ttcal_selectbg="@drawable/xml_border_emptycircle"
+                app:ttcal_textsize="13sp"
+                app:ttcal_titleformat="%d-%d"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_calpopup_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="취소" />
+
+        <Button
+            android:id="@+id/btn_calpopup_ok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="완료" />
+    </LinearLayout>
+</LinearLayout>
