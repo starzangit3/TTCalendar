@@ -1,6 +1,7 @@
 package com.tomtomsoft.ttcalendardemo;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import com.tomtomsoft.ttcalendar.TTCalView;
 
 public class CalendarPopup extends DialogFragment {
 
+    private String TAG = "CalendarPopup";
     private View viewRoot = null;
 
     @Nullable
@@ -47,6 +49,47 @@ public class CalendarPopup extends DialogFragment {
         });
 
         TTCalView calView = view.findViewById(R.id.calView);
+
+        calView.listener = new TTCalView.TTCalViewX() {
+            @Override
+            public void onDaySelected(int y, int m, int d, int state) {
+
+                String sTemp = String.format("click: y=%d,m=%d,d=%d", y, m, d);
+                Log.d(TAG, sTemp);
+
+                TTCalView.TTDateCell cell = null;
+                cell = calView.getSelectedDate();
+                calView.unselectAll();
+
+                cell = calView.getSelectedDate();
+                calView.selectDate(y, m, d, true);
+                cell = calView.getSelectedDate();
+
+            }
+
+            @Override
+            public void onPrevMonth() {
+
+                calView.movePrevMonth();
+                int y = calView.getYear();
+                int m = calView.getMonth();
+                int d = calView.getDay();
+                String sTemp = String.format("Prev: y=%d,m=%d,d=%d", y, m, d);
+                Log.d(TAG, sTemp);
+
+            }
+
+            @Override
+            public void onNextMonth() {
+                calView.moveNextMonth();
+                int y = calView.getYear();
+                int m = calView.getMonth();
+                int d = calView.getDay();
+                String sTemp = String.format("Next: y=%d,m=%d,d=%d", y, m, d);
+                Log.d(TAG, sTemp);
+
+            }
+        };
 
         calView.selectDate(2021, 6, 23, true);
 

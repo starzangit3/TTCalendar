@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,7 +34,7 @@ public class TTCalView extends LinearLayout {
 
     public class TTDateCell {
 
-        int nState = 0;
+        //int nState = 0;
 
         public int y;
         public int m;
@@ -223,7 +224,7 @@ public class TTCalView extends LinearLayout {
                         TTDateCell cellDate = mDateCell[pos];
                         if(cellDate!=null) {
                             mCalendar.set(Calendar.DAY_OF_MONTH, cellDate.d);
-                            listener.onDaySelected(cellDate.y, cellDate.m, cellDate.d, cellDate.nState);
+                            listener.onDaySelected(cellDate.y, cellDate.m, cellDate.d, cellDate.state);
                         }
 
                     }
@@ -352,9 +353,22 @@ public class TTCalView extends LinearLayout {
             if(llCell!=null) {
                 TextView tv = llCell.findViewById(R.id.ttcalview_cell_tv);
                 tv.setBackgroundResource(0);
-                cell.nState ^= STATE_SELECTED;
+                cell.state &= ~STATE_SELECTED;
             }
         }
+    }
+
+    public TTDateCell getSelectedDate() {
+        TTDateCell cell = null;
+
+        for(int i=0; i<CELL_COUNT; i++) {
+            TTDateCell tempCell = mDateCell[i];
+            if((tempCell.state & STATE_SELECTED)>0) {
+                cell = tempCell;
+                break;
+            }
+        }
+        return cell;
     }
 
     public void selectDate(int y, int m, int d, Boolean bSelect) {
@@ -371,10 +385,10 @@ public class TTCalView extends LinearLayout {
             if(bSelect) {
                 int nSelectBg = attrSelectBg > 0 ? attrSelectBg : R.drawable.xml_border_circle;
                 tv.setBackgroundResource(nSelectBg);
-                cell.nState += STATE_SELECTED;
+                cell.state |= STATE_SELECTED;
             } else {
                 tv.setBackgroundResource(0);
-                cell.nState ^= STATE_SELECTED;
+                cell.state ^= STATE_SELECTED;
             }
         }
     }
